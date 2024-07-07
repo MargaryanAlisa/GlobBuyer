@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_verification', function (Blueprint $table) {
+        Schema::create('users_addresses', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
-            $table->string('verification_attachment')->nullable();
-            $table->string('passport_number')->unique()->nullable();
-            $table->boolean('is_verified')->default(false);
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state_province')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('residence_address')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_verification');
+        Schema::dropIfExists('users_addresses');
     }
 };

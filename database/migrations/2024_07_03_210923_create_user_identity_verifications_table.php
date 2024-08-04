@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_verification', function (Blueprint $table) {
+        Schema::create('user_identity_verifications', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
             $table->string('verification_attachment')->nullable();
             $table->string('passport_number')->unique()->nullable();
-            $table->boolean('is_verified')->default(false);
+            $table->enum('status', array_values(\App\Models\UserIdentityVerification::IDENTITY_STATUS))->comment("[pending => 1, verified => 2, failed => 3]");
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_verification');
+        Schema::dropIfExists('user_identity_verifications');
     }
 };

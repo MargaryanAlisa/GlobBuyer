@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
             $table->string('verification_attachment')->nullable();
             $table->string('passport_number')->unique()->nullable();
-            $table->enum('status', array_values(\App\Models\UserIdentityVerification::IDENTITY_STATUS))->comment("[pending => 1, verified => 2, failed => 3]");
+            $table->enum('status', array_values(\App\Models\UserIdentityVerification::IDENTITY_STATUS))->comment("pending => 1, verified => 2, failed => 3");
             $table->timestamps();
         });
     }

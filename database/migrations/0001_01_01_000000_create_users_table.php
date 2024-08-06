@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->string('role')->comment('admin => 1,  user => 2');
+            $table->enum('role', array_values(\App\Models\User::ROLES))->comment("admin => 1,  user => 2");
             $table->string('phone_number')->unique();
             $table->string('password');
             $table->string('profile_attachment')->nullable();

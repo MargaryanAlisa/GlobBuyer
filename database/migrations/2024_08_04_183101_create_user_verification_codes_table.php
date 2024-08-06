@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('phone_verification_code')->nullable();
             $table->boolean('phone_verified')->default(false);
             $table->boolean('email_verified')->default(false);
-            $table->enum('status', array_values(\App\Models\UserVerificationCode::VERIFICATION_CODE_STATUSES))->comment(" [pending => 1, verified =>2]");
-            $table->enum('verification_type', array_values(\App\Models\UserVerificationCode::VERIFICATION_TYPES))->comment(" [registration => 1, forgot_password =>2]");
+            $table->enum('status', array_values(\App\Models\UserVerificationCode::VERIFICATION_CODE_STATUSES))->comment("pending => 1, verified => 2");
+            $table->enum('verification_type', array_values(\App\Models\UserVerificationCode::VERIFICATION_TYPES))->comment("registration => 1, forgot_password => 2");
             $table->timestamps();
         });
     }

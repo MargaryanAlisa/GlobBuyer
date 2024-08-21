@@ -12,6 +12,7 @@ namespace App\Models;
  */
 class UserAddress extends BaseModel
 {
+    protected $table = 'users_addresses';
     protected $fillable = [
         'user_id',
         'country',

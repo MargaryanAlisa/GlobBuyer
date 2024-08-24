@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Fragments\User\Getters;
+use App\Models\Fragments\User\Mutators;
+use App\Models\Fragments\User\Relations;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -11,6 +14,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property string $name
@@ -27,7 +31,7 @@ class User extends BaseModel implements
     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail,
-    HasFactory, Notifiable;
+    HasFactory, Notifiable, HasApiTokens, Mutators, Relations, Getters;
 
     const ROLES = [
         'admin' => 1,

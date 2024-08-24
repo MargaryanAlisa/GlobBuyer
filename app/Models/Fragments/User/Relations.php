@@ -2,6 +2,7 @@
 
 namespace App\Models\Fragments\User;
 
+
 use App\Models\UserAddress;
 use App\Models\UserIdentityVerification;
 use Illuminate\Database\Eloquent\Relations\HasOne;

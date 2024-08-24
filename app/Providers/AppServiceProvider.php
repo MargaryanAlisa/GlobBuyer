@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Sanctum\PersonalAccessToken;
+use Laravel\Sanctum\Sanctum;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,8 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-//        if (app()->environment('local')) {
-//            Artisan::call('l5-swagger:generate');
-//        }
+     //  php artisan l5-swagger:generate
+        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Persisters;
 
+namespace App\Http\Persisters;
+
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 

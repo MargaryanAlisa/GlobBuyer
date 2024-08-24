@@ -11,7 +11,7 @@ trait Relations
 {
     public function address(): HasOne
     {
-        return $this->hasOne(UserAddress::class);
+       return $this->hasOne(UserAddress::class);
     }
 
     public function identityVerification(): HasOne

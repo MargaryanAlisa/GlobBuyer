@@ -4,6 +4,7 @@ namespace App\Http\Transformers\User;
 
 use App\Http\Transformers\BaseTransformer;
 use App\Models\User;
+
 class AuthTransformer extends BaseTransformer
 {
 

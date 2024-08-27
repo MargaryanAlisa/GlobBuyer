@@ -24,7 +24,7 @@ class AuthTransformer extends BaseTransformer
     public function loginTransform(User $user): array
     {
         return array_merge(self::me($user),
-            ['apiToken' => $user->getAccessToken()]
+            ['accessToken' => $user->getAccessToken()]
         );
     }
 }

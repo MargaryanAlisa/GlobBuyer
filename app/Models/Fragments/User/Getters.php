@@ -6,6 +6,6 @@ trait Getters
 {
     public function getAccessToken()
     {
-        return $this->currentAccessToken()->accessToken->token;
+        return $this->currentAccessToken();
     }
 }

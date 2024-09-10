@@ -54,7 +54,7 @@ class RegisterPersister extends BasePersister
 
     private function signinUser(): void
     {
-        $this->registeredUser->withAccessToken($this->registeredUser->createToken(''));
+        $this->registeredUser->withAccessToken($this->registeredUser->createToken('')->plainTextToken);
         Auth::login($this->registeredUser);
     }
 

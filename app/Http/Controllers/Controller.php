@@ -12,12 +12,12 @@ namespace App\Http\Controllers;
  * )
  * @OA\SecurityScheme(
  * type="http",
+ * name="Authorization",
  * securityScheme="bearerAuth",
  * scheme="bearer",
- * bearerFormat="JWT"
+ * bearerFormat="Sanctum"
  * )
  */
-
 abstract class Controller
 {
     //

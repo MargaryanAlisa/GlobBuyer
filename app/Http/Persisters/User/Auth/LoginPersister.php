@@ -20,7 +20,7 @@ class LoginPersister extends BasePersister
     {
         if (Auth::attempt($this->data->only('email', 'password')->toArray())){
             $this->loggedUser->tokens()->delete();
-            $this->loggedUser->withAccessToken($this->loggedUser->createToken(''));
+            $this->loggedUser->withAccessToken($this->loggedUser->createToken('')->plainTextToken);
         }else{
             Auth::logout();
             abort(403, 'Wrong email or password');

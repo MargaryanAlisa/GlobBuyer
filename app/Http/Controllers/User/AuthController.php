@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Executor\User\Auth\LogoutExecutor;
 use App\Http\Persisters\User\Auth\LoginPersister;
 use App\Http\Persisters\User\Auth\RegisterPersister;
 use App\Http\Requests\User\Auth\LoginRequest;
+use App\Http\Requests\User\Auth\LogoutRequest;
 use App\Http\Requests\User\Auth\RegisterRequest;
 use App\Http\Transformers\User\AuthTransformer;
 
@@ -62,5 +64,21 @@ class AuthController extends Controller
     public function login(LoginRequest $request, LoginPersister $persister): array
     {
         return AuthTransformer::login($persister->persist($request->getProcessedData())->getLoggedUser());
+    }
+
+    /**
+     * @OA\Post  (
+     *      path="/api/logout",
+     *      tags={"Auth"},
+     *      summary="Request to logout user",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\Response(response=200, description="Success response"),
+     *      @OA\Response(response=401, description="Unauthenticated"),
+     *      @OA\Response(response=403, description="Forbidden"),
+     *     )
+     */
+    public function logout(LogoutRequest $request, LogoutExecutor $executor): array
+    {
+        return $executor->execute()->getResponseMessage();
     }
 }

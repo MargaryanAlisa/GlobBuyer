@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\Info(
@@ -18,7 +19,7 @@ namespace App\Http\Controllers;
  * bearerFormat="Sanctum"
  * )
  */
-abstract class Controller
+abstract class Controller extends BaseController
 {
     //
 }

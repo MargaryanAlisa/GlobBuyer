@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -13,14 +14,10 @@ return new class extends Migration {
         Schema::create('posts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
-            $table->string('product_name');
-            $table->string('product_price');
+            $table->foreignUuid('product_id')->constrained();
             $table->tinyInteger('product_measured');
             $table->integer('product_quantity')->nullable();
-            $table->longText('product_description');
             $table->string('additional_fee');
-            $table->longText('product_info')->nullable();
-            $table->string('product_attachment')->nullable();
             $table->timestamps();
         });
     }

@@ -50,6 +50,6 @@ class StorePersister extends BasePersister
 
     public function getPost()
     {
-        return $this->post;
+        return $this->post->fresh();
     }
 }

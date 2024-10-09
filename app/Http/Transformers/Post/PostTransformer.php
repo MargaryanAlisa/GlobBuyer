@@ -18,6 +18,8 @@ class PostTransformer extends BaseTransformer
             'product_measured' => $item->product_measured,
             'additional_fee' => $item->additional_fee,
             'product_quantity' => $item->product_quantity,
+            'status' => $item->status,
+            'visibility' => $item->visibility,
         ];
     }
 

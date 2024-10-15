@@ -24,7 +24,7 @@ class StoreRequest extends BaseRequest
             'productDescription' => ['required', 'string'],
             'additionalFee' => ['required', 'string'],
             'productInfo' => ['sometimes', 'string'],
-//            'productAttachment' => ['sometimes', 'string'],
+            'file' => ['sometimes', 'file'],
             'deliveryPeriod' => ['required', Rule::in(array_values(PostDelivery::DELIVERY_PERIOD))],
             'deliveryDate' => ['sometimes', 'required', 'string'],
             'countryFrom' => ['required', 'string'],

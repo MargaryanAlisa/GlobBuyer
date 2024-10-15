@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->uuid('id')->primary();
             $table->foreignUuid('product_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->string('url');
+            $table->string('path');
             $table->timestamps();
         });
     }

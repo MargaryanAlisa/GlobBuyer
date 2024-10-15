@@ -8,6 +8,19 @@ use App\Models\User;
 
 class UserTransformer extends BaseTransformer
 {
+    /**
+     * @OA\Schema (
+     *   schema="UserSimple",
+     *   type="object",
+     *
+     *   @OA\Property(property="id", type="string"),
+     *   @OA\Property(property="name", type="string"),
+     *   @OA\Property(property="surname", type="string"),
+     *   @OA\Property(property="email", type="string"),
+     *   @OA\Property(property="phoneNumber", type="string"),
+     *
+     * )
+     */
     public function simpleTransform($item): array
     {
         /** @var User $item */

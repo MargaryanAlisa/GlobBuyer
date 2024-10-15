@@ -5,7 +5,9 @@ namespace App\Http\Persisters\Post;
 use App\Http\Persisters\BasePersister;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\ProductAttachment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class StorePersister extends BasePersister
 {
@@ -26,7 +28,19 @@ class StorePersister extends BasePersister
             'description' => $this->data->get('productDescription'),
             'info' => $this->data->get('productInfo'),
         ]);
-        //@TODO make attachment save
+
+        $this->createAttachment();
+    }
+
+    private function createAttachment(): void
+    {
+        if ($file = $this->data->get('file')) {
+            $attachment =  $this->product->attachments()->create([
+                'path' => Str::uuid()->toString().'.'.$file->getClientOriginalExtension(),
+                'name' => $file->getClientOriginalName(),
+            ]);
+            $file->storeAs(ProductAttachment::PATH, $attachment->path);
+        }
     }
     private function createPost(): void
     {
@@ -50,6 +64,6 @@ class StorePersister extends BasePersister
 
     public function getPost()
     {
-        return $this->post;
+        return $this->post->load(['product.attachments', 'delivery', 'creator'])->fresh();
     }
 }

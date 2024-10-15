@@ -18,6 +18,7 @@ class PostDelivery extends BaseModel
         'soon_as_possible' => 2,
         'not_important' => 3,
     ];
+
     protected $fillable = [
         'post_id',
         'delivery_period',

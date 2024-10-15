@@ -18,6 +18,8 @@ return new class extends Migration
             $table->tinyInteger('product_measured');
             $table->integer('product_quantity')->nullable();
             $table->string('additional_fee');
+            $table->string('status')->default(\App\Models\Post::STATUS['pending']);
+            $table->string('visibility')->default(\App\Models\Post::VISIBILITY['visible']);
             $table->timestamps();
         });
     }
